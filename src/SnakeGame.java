@@ -12,6 +12,7 @@ public class SnakeGame extends JFrame {
     }
 
     public static void main(String[] args) {
+        
         SnakeGame snakeGame = new SnakeGame();
     }
 }

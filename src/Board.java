@@ -1,4 +1,5 @@
 import javax.swing.*;
+import javax.swing.plaf.DimensionUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -40,17 +41,59 @@ public class Board extends JPanel implements ActionListener {
     //Ingame Vairable to check collision
     boolean ingame = true;
 
-    Board(){
+    //Button
+    JButton startButton;
+    JLabel text;
 
+    Board(){
         TAdapter tAdapter = new TAdapter();
         addKeyListener(tAdapter);
         setFocusable(true);
 
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
-        initGame();
-        loadImages();
+
+       setButton();
+
     }
+
+    public void setButton(){
+        startButton = new JButton("Play Me");
+        startButton.setOpaque(false);
+        startButton.setContentAreaFilled(false);
+        startButton.setBorderPainted(false);
+
+        Font buttonFont = new Font("Arial", Font.BOLD, 14);
+        startButton.setFont(buttonFont);
+        startButton.setForeground(Color.WHITE);
+
+        startButton.setPreferredSize(new Dimension(100,40));
+
+        setLayout(null);
+        startButton.setBounds(150,150,100,40);
+        add(startButton);
+
+        text = new JLabel("Classic Snake Game");
+        text.setForeground(Color.WHITE);
+        Font textFont = new Font("Arial", Font.BOLD, 18);
+        FontMetrics fontMetrics = getFontMetrics(textFont);
+
+        text.setFont(textFont);
+        text.setBounds((WIDTH - fontMetrics.stringWidth(text.getText()))/2,50,200,50);
+        add(text);
+
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startButton.setVisible(false);
+                text.setVisible(false);
+                initGame();
+                loadImages();
+            }
+        });
+    }
+
 
     //Initialize the Snake function
     public void initGame(){
@@ -88,6 +131,7 @@ public class Board extends JPanel implements ActionListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         drawImage(g);
+
     }
 
     //Draw image
@@ -114,8 +158,6 @@ public class Board extends JPanel implements ActionListener {
         apple_x = (int) (Math.random()*39)*10;
         apple_y = (int) (Math.random()*39)*10;
 
-
-
     }
 
     public void gameOver(Graphics g){
@@ -128,8 +170,8 @@ public class Board extends JPanel implements ActionListener {
         g.setColor(Color.WHITE);
         g.setFont(small);
 
-        g.drawString(msg, (WIDTH - fontMetrics.stringWidth(msg))/2, HEIGHT/2);
-        g.drawString(scoreMsg, (WIDTH - fontMetrics.stringWidth(scoreMsg))/2, 3*HEIGHT/4);
+        g.drawString(msg, (WIDTH - fontMetrics.stringWidth(msg))/2, 50);
+        g.drawString(scoreMsg, (WIDTH - fontMetrics.stringWidth(scoreMsg))/2, 150);
 
     }
 
