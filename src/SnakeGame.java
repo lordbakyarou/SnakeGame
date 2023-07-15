@@ -2,9 +2,19 @@ import javax.swing.*;
 
 
 public class SnakeGame extends JFrame {
+    Board board;
 
     SnakeGame(){
-        Board board = new Board();
+        board = new Board();
+        add(board);
+        pack();
+        setResizable(false);
+        setVisible(true);
+    }
+
+    SnakeGame(String s){
+        remove(board);
+        board = new Board();
         add(board);
         pack();
         setResizable(false);

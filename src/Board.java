@@ -43,7 +43,11 @@ public class Board extends JPanel implements ActionListener {
 
     //Button
     JButton startButton;
+    JButton restartButton;
     JLabel text;
+
+    //First Game counter
+    boolean firstGame = true;
 
     Board(){
         TAdapter tAdapter = new TAdapter();
@@ -53,8 +57,20 @@ public class Board extends JPanel implements ActionListener {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         setBackground(Color.BLACK);
 
-       setButton();
+        if(firstGame){
+            firstGame = false;
+            setButton();
+        }
 
+    }
+
+    Board(boolean ifTrue){
+        TAdapter tAdapter = new TAdapter();
+        addKeyListener(tAdapter);
+        setFocusable(true);
+
+        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        setBackground(Color.BLACK);
     }
 
     public void setButton(){
@@ -112,7 +128,6 @@ public class Board extends JPanel implements ActionListener {
         timer = new Timer(DELAY, this);
         timer.start();
 
-
     }
 
     //Load Images from resource folder
@@ -131,7 +146,6 @@ public class Board extends JPanel implements ActionListener {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         drawImage(g);
-
     }
 
     //Draw image
@@ -150,7 +164,7 @@ public class Board extends JPanel implements ActionListener {
         }
         else{
             gameOver(g);
-            timer.start();
+            timer.stop();
         }
     }
 
@@ -173,6 +187,36 @@ public class Board extends JPanel implements ActionListener {
         g.drawString(msg, (WIDTH - fontMetrics.stringWidth(msg))/2, 50);
         g.drawString(scoreMsg, (WIDTH - fontMetrics.stringWidth(scoreMsg))/2, 150);
 
+
+        //Restart Button
+        restartButton = new JButton("Restart");
+        restartButton.setOpaque(false);
+        restartButton.setContentAreaFilled(false);
+        restartButton.setBorderPainted(false);
+
+        Font buttonFont = new Font("Arial", Font.BOLD, 14);
+        restartButton.setFont(buttonFont);
+        restartButton.setForeground(Color.WHITE);
+
+        restartButton.setPreferredSize(new Dimension(100,40));
+
+        setLayout(null);
+        restartButton.setBounds(150,150,100,40);
+        add(restartButton);
+
+        restartButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Container parent = getParent();
+                parent.remove(Board.this);
+                Board newBoard = new Board(true);
+                parent.add(newBoard);
+                parent.revalidate();
+                newBoard.requestFocusInWindow();
+                newBoard.initGame();
+                newBoard.loadImages();
+            }
+        });
     }
 
     public void checkCollision(){
