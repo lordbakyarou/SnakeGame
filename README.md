@@ -1,4 +1,4 @@
-🐍 ## Snake Game 🎮
+## Snake🐍 Game 🎮
 
 This is a simple Snake game implemented in Java using the Swing library. The game allows players to control a snake and navigate it around the game board to eat apples and grow longer. The objective of the game is to eat as many apples as possible without colliding with the snake's own body or the game board's boundaries.
 
