@@ -51,6 +51,14 @@ You can customize certain aspects of the game by modifying the following variabl
 
 You can also replace the images used in the game (`body.png`, `head.png`, and `apple.png`) with your own images. Make sure to update the file paths in the `loadImages` method accordingly.
 
+## Restart Game
+
+To restart the game after it ends, you can press the "Play Me" button. This will start a new game with a fresh snake and score.
+
+## Max Score
+
+The maximum score achieved in the game is calculated based on the length of the snake. Each apple eaten increases the length of the snake, and the score is calculated by subtracting 3 from the length and multiplying the result by 100.
+
 ## Acknowledgements
 
 This game was created by Mayur Hanwate and is provided as an open-source project. Feel free to modify, distribute, and use this code for learning or personal purposes.
