@@ -39,6 +39,24 @@ To use this code, follow these steps:
 2. Compile the Java source files using a Java compiler.
 3. Execute the compiled program to start the Snake game.
 
+ ## Screenshots 📸
+Here are some screenshots of the Snake game:
+
+Game Start:
+
+![image](https://github.com/lordbakyarou/SnakeGame/assets/70631103/c3fdde71-4efe-4668-9e1d-0b7eaa888283)
+
+
+In-Game:
+
+![image](https://github.com/lordbakyarou/SnakeGame/assets/70631103/99f13cea-7e2a-4deb-818f-ca0f0aa7d192)
+
+
+Game Over:
+
+![image](https://github.com/lordbakyarou/SnakeGame/assets/70631103/341fdc66-6f08-41bc-a007-8d104ed14288)
+
+
 ## Customization 🎨
 
 You can customize certain aspects of the game by modifying the following variables in the `Board` class:
