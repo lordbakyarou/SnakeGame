@@ -17,6 +17,7 @@ To run the Snake game, follow these steps:
 
 1. Compile the Java source files.
 2. Execute the compiled program.
+3. Press "Play Me" button to start the game
 
 ## Dependencies 📚
 
@@ -71,7 +72,7 @@ You can also replace the images used in the game (`body.png`, `head.png`, and `a
 
 ## Restart Game 🔄
 
-To restart the game after it ends, you can press the "Play Me" button. This will start a new game with a fresh snake and score.
+To restart the game after it ends, you can press the "Restart" button. This will start a new game with a fresh snake and score.
 
 ## Max Score 🏆
 
